@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+button {
+  width: 100px;
+  height: 25px;
+  background: gray;
+  outline: none;
+  border: none;
+  color: white;
+  letter-spacing: 2px;
+}
+
+input {
+  height: 20px;
+}
+
+.userInfoBox {
+  width: 100%;
+  height: 20vh;
+  background: lightgrey;
+  padding-top: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.userPicture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
