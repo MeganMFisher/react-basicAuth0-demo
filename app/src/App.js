@@ -15,8 +15,8 @@ class App extends Component {
     }
 
     this.checkUser = this.checkUser.bind(this)
-    // this.updateInput = this.updateInput.bind(this)
-    // this.submit = this.submit.bind(this)
+    this.updateInput = this.updateInput.bind(this)
+    this.submit = this.submit.bind(this)
   }
 
   checkUser() {
@@ -30,20 +30,20 @@ class App extends Component {
     })
   }
 
-  // updateInput(e) {
-  //   this.setState({
-  //     userInput: e.target.value
-  //   })
-  // }
+  updateInput(e) {
+    this.setState({
+      userInput: e.target.value
+    })
+  }
 
-  // submit() {
-  //   return axios.post('/posting', {data: this.state.userInput}).then(res => {
-  //     this.setState({
-  //       submitted: res.data,
-  //       userInput: ''
-  //     })
-  //   })
-  // }
+  submit() {
+    return axios.post('/posting', {data: this.state.userInput}).then(res => {
+      this.setState({
+        submitted: res.data,
+        userInput: ''
+      })
+    })
+  }
 
   componentDidMount() {
     this.checkUser() 
@@ -69,11 +69,11 @@ class App extends Component {
 
         </div>
 
-        {/* <input value={ this.state.userInput } onChange={ this.updateInput }/>
+         <input value={ this.state.userInput } onChange={ this.updateInput }/>
 
         <button disabled={ !this.state.user } onClick={ this.submit }>{ this.state.user ? 'SUBMIT' : 'Must Login' }</button>
 
-        <p>{ this.state.submitted }</p> */}
+        <p>{ this.state.submitted }</p> 
 
       </div>
     );
