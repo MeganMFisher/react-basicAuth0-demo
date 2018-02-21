@@ -28,23 +28,27 @@ passport.use(new Auth0Strategy({
    callbackURL:  '/auth/callback'
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
-//    var db = app.get('db')
-//     //Find user in database
-//     db.getUserByAuthId(profile.id).then(function (user) {
-//       user = user[0];
-//       if (!user) { //if there isn't one, we'll create one!
-//         console.log('CREATING USER');
-//         db.createUserByAuth([profile.displayName, profile.id]).then(function             (user) {
-//           console.log('USER CREATED', user);
-//           return done(null, user[0]); // GOES TO SERIALIZE USER
-//         })
-//       } else { //when we find the user, return it
-//         console.log('FOUND USER', user);
-//         return done(null, user);
-//       }
-//     })
-//   }
-        return done(null, profile);
+   var db = app.get('db')
+   var user = {
+     userid: profile.id
+   }
+    //Find user in database
+  //   db.getUserByAuthId(profile.id).then(function (user) {
+  //     user = user[0];
+  //     if (!user) { //if there isn't one, we'll create one!
+  //       console.log('CREATING USER');
+  //       db.createUserByAuth([profile.displayName, profile.id]).then(function             (user) {
+  //         console.log('USER CREATED', user);
+  //         return done(null, user[0]); // GOES TO SERIALIZE USER
+  //       })
+  //     } else { //when we find the user, return it
+  //       console.log('FOUND USER', user);
+  //       return done(null, user);
+  //     }
+  //   })
+  // // }
+  //       return done(null, profile);
+  done(null, user)
     })
 );
 
@@ -65,6 +69,8 @@ app.get('/auth/callback',
 })
 
 app.get('/auth/me', function(req, res) {
+  console.log(req.session)
+  console.log(req.user)
   if (!req.user) return res.sendStatus(404);
   res.status(200).send(req.user);
 })
